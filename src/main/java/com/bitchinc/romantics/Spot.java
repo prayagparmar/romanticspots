@@ -7,22 +7,36 @@ public class Spot {
 
 	@Id private String id;
 
-	private String latitude;
-	private String longitude;
-
-	public String getLatitude() {
-		return latitude;
+	private String description;
+	
+	private double[] position;
+	
+	public double[] getPosition() {
+		return position;
 	}
 
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
+	public void setPosition(double[] pos) {
+		this.position = pos;
 	}
 
-	public String getLongitude() {
-		return longitude;
+	@Override
+	public String toString() {
+		return String.format("%s(%1.3f, %1.3f)", id, position[0], position[1]);
 	}
 
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
 	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	
 }

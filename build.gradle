@@ -13,7 +13,12 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'war'
 
+war {
+    baseName = 'romantic-spots'
+    version =  '0.1.0'
+}
 jar {
     baseName = 'gs-accessing-mongodb-data-rest'
     version =  '0.1.0'
@@ -25,10 +30,14 @@ repositories {
     maven { url "http://repo.spring.io/libs-release" }
     maven { url "http://m2.neo4j.org" }
 }
+configurations {
+    providedRuntime
+}
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.data:spring-data-mongodb")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     compile("org.springframework.data:spring-data-rest-webmvc")
     testCompile("junit:junit")
 }

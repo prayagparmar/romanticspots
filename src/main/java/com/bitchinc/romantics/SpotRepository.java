@@ -2,13 +2,20 @@ package com.bitchinc.romantics;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.geo.Box;
+import org.springframework.data.mongodb.core.geo.Circle;
+import org.springframework.data.mongodb.core.geo.Distance;
+import org.springframework.data.mongodb.core.geo.Point;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "spot", path = "spot")
+@SuppressWarnings("deprecation")
+@Repository
 public interface SpotRepository extends MongoRepository<Spot, String> {
 
-	List<Spot> findByLatitude(@Param("latitude") String latitude);
+	List<Spot> findByPositionWithin(Circle c);
 
+	List<Spot> findByPositionWithin(Box b);
+
+	List<Spot> findByPositionNear(Point p, Distance d);
 }
