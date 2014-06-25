@@ -18,4 +18,5 @@ public interface SpotRepository extends MongoRepository<Spot, String> {
 	List<Spot> findByPositionWithin(Box b);
 
 	List<Spot> findByPositionNear(Point p, Distance d);
+	
 }

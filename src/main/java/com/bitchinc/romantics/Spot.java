@@ -5,7 +5,22 @@ import org.springframework.data.annotation.Id;
 
 public class Spot {
 
+	public Spot(String id, String description, double[] position) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.position = position;
+	}
+
 	@Id private String id;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	private String description;
 	
