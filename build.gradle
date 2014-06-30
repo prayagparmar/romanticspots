@@ -1,27 +1,28 @@
-buildscript {
-    repositories {
-        maven { url "http://repo.spring.io/libs-release" }
-        mavenLocal()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.1.RELEASE")
-    }
-}
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'war'
+apply plugin: 'propdeps'
+
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-release" }
+        maven { url 'http://repo.spring.io/milestone/' }
+        maven { url 'http://repo.spring.io/plugins-release' }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.1.RELEASE")
+        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:0.9.8'
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.1'
+    }
+}
 
 war {
     baseName = 'romantic-spots'
-    version =  '0.1.0'
-}
-jar {
-    baseName = 'gs-accessing-mongodb-data-rest'
-    version =  '0.1.0'
+    version = '0.1.0'
 }
 
 repositories {
@@ -35,10 +36,31 @@ configurations {
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
+    //Security
+    compile 'org.springframework.security:spring-security-web:3.2.0.M2'
+    compile 'org.springframework.security:spring-security-core:3.2.0.M2'
+    compile 'org.springframework.security:spring-security-config:3.2.0.M2'
+
+    //Data/MongoDB
     compile("org.springframework.data:spring-data-mongodb")
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
+    //Spring Core
     compile("org.springframework.data:spring-data-rest-webmvc")
+    compile 'org.springframework:spring-core:3.2.3.RELEASE'
+    compile 'org.springframework:spring-webmvc:3.2.3.RELEASE'
+    compile 'com.jayway.jsonpath:json-path:0.8.1'
+
+    //Logger and Data Conversion
+    compile 'org.slf4j:slf4j-api:1.7.5'
+    runtime 'org.slf4j:slf4j-jdk14:1.7.5'
+    runtime 'com.fasterxml.jackson.core:jackson-core:2.2.2'
+    runtime 'com.fasterxml.jackson.core:jackson-databind:2.2.2'
+    runtime 'javax.xml.bind:jaxb-api:2.2.9'
+
+    //Servlet
+    provided 'javax.servlet:javax.servlet-api:3.0.1'
+
+    //Testing
     testCompile("junit:junit")
 }
 

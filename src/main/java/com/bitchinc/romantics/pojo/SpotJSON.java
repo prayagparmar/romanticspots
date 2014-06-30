@@ -1,4 +1,4 @@
-package com.bitchinc.romantics;
+package com.bitchinc.romantics.pojo;
 
 public class SpotJSON {
 	
