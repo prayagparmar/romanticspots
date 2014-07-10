@@ -1,0 +1,6 @@
+.gitignore
+RomanticSpots.iml
+RomanticSpots.ipr
+RomanticSpots.iws
+.gradle/
+build/
