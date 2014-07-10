@@ -47,8 +47,8 @@ public class SpotService {
          > box = [[40.73083, -73.99756], [40.741404,  -73.988135]]
          > db.places.find({"loc" : {"$within" : {"$box" : box}}})
          **/
-        return getJsonSpots(repo.findByPositionWithin(new Box(new Point(lon1, lat1),
-                new Point(lon2, lat2))));
+        return getJsonSpots(repo.findByPositionWithin(new Box(new Point(lat1, lon1),
+                new Point(lat2, lon2))));
     }
 
     @RequestMapping(value = "/", params = {"long", "lat", "rad"},
@@ -60,7 +60,7 @@ public class SpotService {
                                         @RequestParam("rad") Double radius
     ) throws Exception {
 
-        return getJsonSpots(repo.findByPositionWithin(new Circle(centerLon, centerLat, radius)));
+        return getJsonSpots(repo.findByPositionWithin(new Circle(centerLat, centerLon, radius)));
 
     }
 
