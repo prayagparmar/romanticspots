@@ -50,17 +50,28 @@ configurations {
 
 dependencies {
     //Security
-    compile 'org.springframework.security:spring-security-web:3.2.0.M2'
-    compile 'org.springframework.security:spring-security-core:3.2.0.M2'
-    compile 'org.springframework.security:spring-security-config:3.2.0.M2'
+    compile 'org.springframework.security:spring-security-web:3.2.4.RELEASE'
+    compile 'org.springframework.security:spring-security-core:3.2.4.RELEASE'
+    compile 'org.springframework.security:spring-security-config:3.2.4.RELEASE'
 
     //Data/MongoDB
-    compile("org.springframework.data:spring-data-mongodb")
+    compile("org.springframework.data:spring-data-mongodb:1.5.1.RELEASE")
+
+    //JDBC/MySQL
+    compile("org.springframework:spring-jdbc:4.0.6.RELEASE")
+    compile("mysql:mysql-connector-java:5.1.31")
+
+    //Hibernate
+    compile("org.hibernate:hibernate-entitymanager:4.3.5.Final")
+    compile("org.hibernate:hibernate-core:4.3.5.Final")
+
+    //Spring ORM
+    compile("org.springframework:spring-orm:4.0.6.RELEASE")
 
     //Spring Core
-    compile("org.springframework.data:spring-data-rest-webmvc")
-    compile 'org.springframework:spring-core:3.2.3.RELEASE'
-    compile 'org.springframework:spring-webmvc:3.2.3.RELEASE'
+    compile("org.springframework.data:spring-data-rest-webmvc:2.1.1.RELEASE")
+    compile 'org.springframework:spring-core:4.0.6.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.0.6.RELEASE'
     compile 'com.jayway.jsonpath:json-path:0.8.1'
 
     //Logger and Data Conversion
@@ -74,9 +85,10 @@ dependencies {
     provided 'javax.servlet:javax.servlet-api:3.0.1'
 
     //Testing
-    testCompile("junit:junit")
+    testCompile("junit:junit:4.11")
+    compile 'org.apache.httpcomponents:httpclient:4.3.5'
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.0'
 }

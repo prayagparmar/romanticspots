@@ -2,5 +2,7 @@
 RomanticSpots.iml
 RomanticSpots.ipr
 RomanticSpots.iws
+RomanticSpots.ids
 .gradle/
 build/
+/out
