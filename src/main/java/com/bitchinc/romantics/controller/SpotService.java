@@ -19,7 +19,7 @@ public class SpotService {
     @Autowired
     SpotRepository repo;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET,
+    @RequestMapping(value = {"", "/"}, method = RequestMethod.GET,
             produces = "application/json")
     public
     @ResponseBody
