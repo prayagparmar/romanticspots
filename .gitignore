@@ -1,4 +1,9 @@
 .gitignore
+.classpath
+.project
+.idea/
+.settings/
+bin/
 RomanticSpots.iml
 RomanticSpots.ipr
 RomanticSpots.iws
